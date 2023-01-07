@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 public static class ExMath {
 
@@ -11,13 +12,13 @@ public static class ExMath {
    }
 
    public static bool IsPrime (int Input) {
-      if (Input == 1) return false;
-      if (Input % 2 == 0) return true;
+      if (Input <= 1) return false;
+      if (Input == 2) return true;
 
       var Limit = (int) Math.Floor(Math.Sqrt(Input));
 
-      for (int i = 3; i < Limit; i++) {
-         if (Input % 1 == 0) {
+      for (int i = 2; i <= Limit; i++) {
+         if (Input % i == 0) {
             return false;
          }
       }
@@ -25,7 +26,7 @@ public static class ExMath {
    }
 
    public static bool IsSquare (int Input) {
-      return Math.Sqrt((double) Input) % 1 == 0;
+      return Math.Sqrt(Input) % 1 <= .001f;
    }
 
    public static int BaseTo10 (int Input, int Base) { //From base N to base 10. With N being less than 10
@@ -47,8 +48,48 @@ public static class ExMath {
       return Current;
    }
 
-   public static int HexToDecimal (char First, char Second) {
+   public static int HexToDecimal (string Input) {
+      Input = Input.ToUpper();
       string Hex = "0123456789ABCDEF";
-      return Array.IndexOf(Hex.ToCharArray(), First) * 16 + Array.IndexOf(Hex.ToCharArray(), Second);
+      int L = Input.Length;
+      int Answer = 0;
+
+      for (int i = Input.Length - 1; i >= 0; i--) {
+         Answer += Hex.IndexOf(Input[i].ToString()) * (int) Math.Pow(16, L - i);
+      }
+      return Answer;
+   }
+
+   public static int DigitSum (int Input) {
+      if (Input == 0) {
+         return 0;
+      }
+      return DigitSum(Input / 10) + Input % 10;
+   }
+
+   public static int[] ToIntArray (int Input) {
+
+      int[] result = Input.ToString().Select(o => Convert.ToInt32(o) - 48).ToArray();
+
+      return result;
+   }
+
+   public static int GCD (int x, int y) {
+      var temp = 0;
+      if (x < y) {
+         temp = x;
+         x = y;
+         y = temp;
+      }
+      while (y != 0) {
+         temp = x % y;
+         x = y;
+         y = temp;
+      }
+      return x;
+   }
+
+   public static bool IsCoprime (int x, int y) {
+      return GCD(x, y) == 1;
    }
 }

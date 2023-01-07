@@ -15,10 +15,12 @@ public class FollowMe : MonoBehaviour {
    public KMSelectable[] MoveSpots;
    public TextMesh[] Arrows;
 
-   bool[] Highlighted = new bool[4];
-   bool[] HaveHighlighted = new bool[4];
+   string TPAPath = "";
 
-   string[][] Maze = new string[][] {
+   bool[] Highlighted = new bool[4];
+   //bool[] HaveHighlighted = new bool[4];
+
+   /*string[][] Maze = new string[][] {
      new string[] {"R" , "LDR" , "LR" , "LR" , "LR" , "LR" , "DL" , "DR" , "DL" , "D" , "D"},
      new string[] {"DR" , "UDL" , "D" , "DR" , "LR" , "LR" , "LU" , "U" , "UDR" , "LU" , "UD"},
      new string[] {"UD" , "UD" , "UR" , "LUR" , "LDR" , "LDR" , "LR" , "LR" , "LU" , "D" , "UD"},
@@ -30,10 +32,21 @@ public class FollowMe : MonoBehaviour {
      new string[] {"UD" , "UD" , "UD" , "UD" , "DR" , "LD" , "UD" , "URD" , "LU" , "UD" , "UD"},
      new string[] {"UD" , "UDR" , "UDL" , "UR" , "UL" , "UR" , "UDL" , "UDR" , "L" , "UDR" , "LU"},
      new string[] {"UR" , "LU" , "UR" , "LR" , "L" , "R" , "LU" , "UR" , "LR" , "LRU" , "L"}
-   };
+   };*/
    //string Arrows = "????";
 
-   int[] InitPos = { 0, 0 };
+   string[][] Maze = new string[][] {
+     new string[] {"R" , "LDR" , "LR" , "LR" , "LR" , "LR" , "DL" , "D"},
+     new string[] {"DR" , "UDL" , "D" , "D" , "L" , "LR" , "ULDR" , "UL"},
+     new string[] {"UD" , "UD" , "UR" , "LUR" , "LDR" , "LDR" , "ULR" , "L"},
+     new string[] {"UD" , "UR" , "LR" , "DL" , "UD" , "UR" , "LR" , "LD"},
+     new string[] {"UR" , "LDR" , "DL" , "UR" , "ULDR" , "LR" , "LD" , "UD"},
+     new string[] {"D" , "UD" , "UD" , "RD" , "LU" , "DR" , "UL" , "U"},
+     new string[] {"UDR" , "LU" , "UDR" , "UDL" , "DR" , "UL" , "DR" , "LD"},
+     new string[] {"U" , "R" , "UL" , "U" , "UR" , "LR" , "UL" , "U"}
+   };
+
+   int[] InitPos = { 0, 0 }; //Row, column
    int[] Pos = { 0, 0 };
 
    int[] Goal = { 0, 0 };
@@ -50,7 +63,7 @@ public class FollowMe : MonoBehaviour {
 
    void Awake () {
       ModuleId = ModuleIdCounter++;
-      
+
       foreach (KMSelectable But in MoveSpots) {
          //But.OnHighlight += delegate () { ButHL(But); };
          //But.OnHighlightEnded += delegate () { ButHLE(But); };
@@ -118,11 +131,11 @@ public class FollowMe : MonoBehaviour {
       }
    }
 
-   bool Started () {
+   /*bool Started () {
       return HaveHighlighted[0] & HaveHighlighted[1] & HaveHighlighted[2] & HaveHighlighted[3];
    }
 
-   /*void Update () {
+   void Update () {
       if (Started() && !ModuleSolved) {
          int time = (int) Bomb.GetTime() % 10;
          if (time != LastDig) {
@@ -175,10 +188,10 @@ public class FollowMe : MonoBehaviour {
       }
    }*/
 
-   void Reset() {
-      for (int i = 0; i < 4; i++) {
+   void Reset () {
+      /*for (int i = 0; i < 4; i++) {
          HaveHighlighted[i] = false;
-      }
+      }*/
       Generate();
       Pos[0] = InitPos[0];
       Pos[1] = InitPos[1];
@@ -189,12 +202,43 @@ public class FollowMe : MonoBehaviour {
       PathDisplay = StartCoroutine(ShowPath());
       Pos[0] = InitPos[0];
       Pos[1] = InitPos[1];
+
+      string pathLog = "";
+      for (int i = 0; i < Path.Count(); i++) {
+         pathLog += Path[i];
+      }
+      Debug.LogFormat("[Follow Me #{0}] Starting at position {1}{2}, the path goes: {3}.", ModuleId, "ABCDEFGH"[InitPos[1]], InitPos[0] + 1, pathLog);
+      Debug.LogFormat("[Follow Me #{0}] Goal position is at {1}{2}.", ModuleId, "ABCDEFGH"[Goal[1]], Goal[0] + 1);
    }
 
    void GenerateGoal () {
-      Goal[0] = 10 - InitPos[0];
-      Goal[1] = 10 - InitPos[1];
-      Debug.Log("ABCDEFGHIJK"[Goal[1]].ToString() + (Goal[0] + 1));
+      int vertCount = 0;
+      int horiCount = 0;
+      int upCount = 0;
+      int downCount = 0;
+
+      foreach (string dir in Path) {
+         if (dir == "U") {
+            vertCount++;
+            upCount++;
+         }
+         else if (dir == "D") {
+            vertCount++;
+            downCount++;
+         }
+         else {
+            horiCount++;
+         }
+      }
+
+      Goal[0] += vertCount >= horiCount ? 4 : 0;
+      Goal[0] += downCount >= upCount ? 2 : 0;
+      Goal[0] += InitPos[1] != 0 && InitPos[1] != 4 ? 1 : 0;
+
+      string letterCol = "ABCDEFGH";
+      Goal[1] += !Bomb.GetSerialNumberLetters().Any(x => letterCol.Contains(x.ToString())) ? 4 : 0;
+      Goal[1] += !ExMath.IsPrime(InitPos[0] + 1) ? 2 : 0;
+      Goal[1] += Path.Count() < 5 ? 1 : 0;
    }
 
    IEnumerator ShowPath () {
@@ -203,7 +247,7 @@ public class FollowMe : MonoBehaviour {
       }
       while (true) {
          for (int i = 0; i < Path.Count(); i++) {
-            
+
             switch (Path[i]) {
                case "R":
                   Arrows[2].gameObject.SetActive(true);
@@ -218,7 +262,7 @@ public class FollowMe : MonoBehaviour {
                   Arrows[3].gameObject.SetActive(true);
                   break;
             }
-            
+
             yield return new WaitForSeconds(1f);
             for (int j = 0; j < 4; j++) {
                Arrows[j].gameObject.SetActive(false);
@@ -231,14 +275,14 @@ public class FollowMe : MonoBehaviour {
 
    void Generate () {
       Path.Clear();
-      Pos = new int[2] { Rnd.Range(0, 11), Rnd.Range(0, 11)};
+      Pos = new int[2] { Rnd.Range(0, 8), Rnd.Range(0, 8) };
       InitPos[0] = Pos[0];
       InitPos[1] = Pos[1];
       GeneratePath();
-      Debug.Log("ABCDEFGHIJK"[InitPos[1]].ToString() + (InitPos[0] + 1));
+      /*Debug.Log("ABCDEFGHIJK"[InitPos[1]].ToString() + (InitPos[0] + 1));
       for (int i = 0; i < Path.Count(); i++) {
          Debug.Log(Path[i]);
-      }
+      }*/
       GenerateGoal();
    }
 
@@ -303,8 +347,8 @@ public class FollowMe : MonoBehaviour {
 
    bool CheckOnlyPaths () {
       int Count = 0;
-      for (int i = 0; i < 11; i++) {
-         for (int j = 0; j < 11; j++) {
+      for (int i = 0; i < 8; i++) {
+         for (int j = 0; j < 8; j++) {
             if (CheckPathHelper(i, j)) {
                Count++;
             }
