@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -259,6 +259,195 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1081660166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1005431405654246, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1081660167}
+  - component: {fileID: 1081660170}
+  - component: {fileID: 1081660169}
+  - component: {fileID: 1081660168}
+  m_Layer: 0
+  m_Name: L (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1081660167
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4183165234652876, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1081660166}
+  m_LocalRotation: {x: 0.00000019861236, y: -0.7071068, z: 0.7071068, w: 0.00000019861236}
+  m_LocalPosition: {x: -0.25, y: 0.508, z: 0.25}
+  m_LocalScale: {x: 0.0008000027, y: -0.0008000018, z: 1.5994339}
+  m_Children: []
+  m_Father: {fileID: 1192795426}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 179.99998}
+--- !u!114 &1081660168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114165374098064662, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1081660166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShaderNames:
+  - GUI/KT 3D Text
+--- !u!102 &1081660169
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 102896303516900484, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1081660166}
+  m_Text: "ifghgfigifghfffiihgfgifggffgfgihgfgffihhhffififigiiigifgighgifffggiihihggfghffgfihhfiiigfffhfffgiffh\r\nifgfhiighhfhhgghhfggghggifffihgifffffgggggggffighffhfffhhghhfggggfhghfhiigiifgggfghfffiffhiggfffgghi\r\nghffggfigfgiigighhfgghhihiighgfigfigfiigfihghigifhhiifhffhifihigiihhfigfghfhhiffghigfhhhfggihiifgigh\r\nhfhfhggihfhggihhfihiffhghgfhgigiffgfihffgiffgfgfghhfihfiggfghfhhgigihgfggggggggifghfiifhigfifihhfhgi\r\nhiigifghgghfghhffifihhigfffgigffhgifgigighiihhhiggifiiffgggfffighifggfgfhiigfgghhifhhhhfihgfhfiigghg\r\ngfhffgiiffghghigiigfhgghffihggghfiigifgiggihfihgfghggfihhhfgfiifgghhhghihhgifhfhiifhigghhgggihfififf\r\nhigggffghghgfggifiighiifiifhgfiighhhiihhgfhgfhgggfgighiiiiiigghfifhhhfhifhhgfghiffhgfihihgighhihgghi\r\nifgggggigighhfigggghhiffigigihfgigihhhiifiiigfgfiifhihffhgggfigggiggiffgggffhghffhiifhhfhihffhififif\r\ngghghgggigihiiihfihiiggihgffhfgffffhgiihgihgffgiigiihhhhfghghhggfihihfhhihifififiigfhihfhfgghgfggihg\r\ngigggfggfigfhhhihiihiiigifhhhhfiiigigiihiihhfihifggigihiihhgiffhgihfhigiiifhfhffigfihifhgfghfffhggfh\r\nghiiffghhffiifggiiffgfiifiihfffhgihffghifiigiigiiiifihffghhfggigffgfggiggigiihghghgifghffgighhgfighf\r\ngfiffifgfhggfggffgfggighihhggfffgifffgffihfiifiiffhihgihffhgfifhifiigighhffghifhhfiighighhghfhhfhihi\r\ngfgfhigigghgfifgihiffhighggififghfhiggggghhffhfihiggiighihhgfgffhiiihigfiigghhhifhfhihgfghhfffgfhigf\r\nifhgihhifhgiffhghgiighgffghhfiffggffggggihhhgghfihgggfhfhfhfigiihfhhggfgifiihgfiihiigihfhghhhgifiihg\r\nhhgfgigigfhfiiihfgfhhfgfiifgfifigffhgigigfigiiifggighfigifiiffhhihfihhigfifffffghggfigihhfgfhffgihfi\r\nfghifffigghfigihgiifffgiiggfiiihfgffigfghhghfgfffiggffggggfhgggfgfiifgfffgihhgifgfffghhhiigiiihhgggi\r\niigihhhggghiffffgffggfihhihhffhgifhfhihhfigfhfggggffiifghghihfhhfhgifgffifhifihiihihgfifgffhfffhffgg\r\nghigfffigififiiihgffhigfiigfhhhhiiggiffighigffggihifhiifhhfiiififffgfiggfggighghghhgfighfhgfhihhiigg\r\nihhhhfhfhihfigggihfhiiiggfgiggiggiiffhgiggghigfgggfgihihhfffghiihfhghgiggihffhfgiiifghfhhfhhiifggfgh\r\nhghgfgfgfghihgfghfhfhhghghgfghhhffgiggfhhiifihgffhfifhhfhhgihiifiighggggfhfifggfhfhffigfhfiifgiihigi\r\ngifgiigfiiihfhffhihifhififfigihgghfiihhifgfgfgffffhifhifhfhgghfggfigffhgigihfghggfiihigghghfgffhfhgf\r\niiihgigfgfhffiffifggihifhigffhgfifgihfggghiffghiffhhghgiffggiiiiiigiffihggfghggihhigigfihhfihhfihifg\r\nihfhihgffiiiiifgififighgfhhhgghfggffihiffifhhgigifhgifgffhgifihffigffgfggighhhfhihffhfiififghihggghi\r\nggiigggifgffhigfihigfgghgggghhfhifgihgigfgfggiihihfhfgghfigfhfighghighigfhiighfhfhgfhgihfgihigififgf\r\ngiihgfhhgigfghgggfghihihigghifghhgiiiiighgfgfhgfgfhgfghfhhggfhggfghhffiggghgifffhghggighfffhhiihhigf\r\nffghggfgihhhifffgfghghfgfiighgffiiiffgfihihiifihififggigghiifgihgiighiigghiihghgfhhfhgfiihfiifhifgff\r\nfgihiifffhhggigfhhhgihighfhiggghffihgghifihhgfffffhfhghfhfghfhghgighgfiihggfigfffhgiggifhihiiiifffhf\r\nfgifghgggigggihhgghhhffhghghigiggifgiihhffghghghggfgfifggigiiggfgffigigfihfiiffiihhffggfiiighihfghih\r\nhgghhgghfgggfgghghihfgfhgfiighifhihgifihffggfhgifgggfhgifiiggihhfhihfghghfihffghfgihihgfgfifihhhfigh\r\nggighgihhhiiiffggfiiffiigffhgfigghfgiihhghhfiggighgfhggifhfhgifhfffgffifihfiihhggfffhhihgihihhgiighi\r\nffgihifiihgfhghgfihifiiihgigghffghfhiffgifhgghgggiihgighfgiihihffggfghfhfffgghfhhfhfifhihfhgfhiighfh\r\ngfgfgiifgggigifigghifffgiihghggihffgfhfifighgggiifgifihigighfhhihghffhhhihfhfhgffhghifghhfgfhgffffgf\r\nfghggfhffihhifggfiifihhhfiihiggihhhfhhfighigfiihiffihigfhhgihgfffhhgiighhhhfgfghighfhgigfighihigiigg\r\nfhfiighgihghhhfiifhhfhfgihghiigihhhggfiiifihhihiihhffgfgihffhfgfigiffghhggihfighhiififfigfgfgfggiiig\r\nhhigiggffgfgifigfihfhihgghgfhgfghhfggifhhhhihhihhgfhfhigifgfghfgfghggifhhgiggifhiffifhfgffffgfhiifih\r\nhfgihgigfhgihghgghfgfifffghhghhhhggiigffgihigighifghhgiifghhfhhfhhghgfgihiigifgifgighhiifggfhhhifigf\r\nhigihiihiffiigigfigffgifhggfggfhghhiggiiiigifhhfiigfhifffffgghighifffhghfifiigihiffhghghfghhhghhhfgi\r\nhggffggffhihhfhhfhgffgfhffihffgiiifghhhifhfgggfifghgfiifgfhighiiigfhghggffhfghfghhigfgfgigfiihgghfii\r\nhffiiigifgfhhhihhihfhhfhifgghffghiiiihhhggiggfffgggfihigigigfgihgfgfiifiiffghhgghfihgfhihgghiffihfhf\r\nffhhgihgghigfgghggfffghihgghhffigfhihifhgfiihigfgiffhhihgghifghhiffhifhgffhgghhiihhgghffgifgifiifgfh\r\nghhhgghghifgififhhgghihgfgfghigihhihiifhhhhgffhihgigghiiiigffhgiffghifhfhiiiihhhhfghihgfihihfgiihfih\r\nihghhifffgigigiiggfgiihghffhgiiggfhhgiggfgghifigffgffihhifiggihigihhigffhfhfhhhigfiggffhhihfgfighffg\r\nhgihifiggggggffghffiiiigggififiggffgggfihghgigggfhihifgfhgghfgiihggfihfhfhiiiffgiiiighhihhhfffiffhgf\r\nghiigggfihgihhhiighgiiigggifigfgfighhfifgiiigfiiiifhgghgfgiigghihhifgffifgiffgiihhhifhfifhghfgghgiig\r\ngfiigghhhiihffhfgihfihfhigfhgiigifhhgfhfihifhghggigfhhgfigiihfihgffihghiiggihighfghfgiffhhifghgiihfg\r\nihggfhiffigghigfifghffghhggiffifhhffigggifhhfiiiiifhifggfighighhifhighgihghiihgighgfifihffiighfhghif\r\ngffhgifgggffhffgiihgihhgffghhhgfgfifgfiihighggighifghifgfgiigfggghhihhfgihhigifghhiihiffhhihhggihfgf\r\nhigigiihfhhgfhgfhhggifhiihfffhhgiiffghggggffiihigfghghgghfhhffhgiighihfgfhgggfigfghgihgffggggifghfhh\r\ngggfhhiggffiiifhhiihgiigfgigihfiggigiifiihfifiiiihhghhfffgfghifigifffigfhhfffgffhighhhhighhhhiififfh\r\nggifhhfggiigggffhhfgghihihhfhghhghfggihhhhgifggifgghghihgfifiiihgihhiffihhhfgifhghfghhhhiihfhffhigii\r\nhigihgfiiihhghghfgihgghgihhghffifihgffhihhihghgghhhfghfiifhihfhhhhhihhffhfggifgihhghhhiiihiiihgfifhf\r\nhgfififhfhhifhgiffggggigihhhfigfhfifiigfhffihihfihihgfhighhfffffifghgiifhifhgifiiiffihihfhfggifhghfi\r\nggigiiffiifffhhfhifhhihhgfgfigffgfhiiihihghgffifigfggihififfggfihghihgghigfiihgiggfhfhhiggiiggifggfi\r\nigiggfhhfgigighfighihghfffiihiiiifhiiigifiihgigfffgfiggfggihgfgigfhihhihgfihifghifihiihhffggihihggfh\r\nhifigfghfgfhgfhghhhhgifghhggfifgfififhghghihihggfihhhighihgfhfihfihfgfhihfigfiighgfhfihhhiffgffhgiii\r\ngggggihgghhfhghfhfiigghighgifigfhhgigffgiffifihfhghgiggfhigigggiiffigfihhiihgifigghifhhggiffffgghhfi\r\nfggggfiffiggfghighhihfhfgiggiifhhfhifiggfigghgghhggfggihgifghghhfiifffffhfhhggfiifhifgighiggifghhggh\r\niihhggiihgffggfhiggghffigfggggfgihfgifigiifigiigffgghhhhihfffgffiiggfhfhhhgggifihhghifggfghhhihiifgg\r\nihffgifhfhgfhghihffgigfifggiffgfighfifhhffgihiggighfiighhhgffigfffighghghfgggghhifighhigfgihfifhfhgi\r\niihfhfgfghhhihfiiighffigfigghigghihgghffgffihifhggfgggfgigifhghgfgiiifghggihhhgiffhighghifggffgffhgh\r\ngifiihigihggfghigggihhhiifiiigfffffiiifghfihfhgfhiiffiggigffhiihhiifgiihggfifiggghiihggfghhhfgifgihh\r\nhffhgghgggiffiihihfghhgfgigghhhigfhgfhgfgighghfgiiihghfigfghfhgfigfffiighhiihfggfhhigfiififfhhggfigf\r\ngffiffhgffifiigifgfgghihihhghhfghhgfgfhggighhggigifiigfhihhighhgigiihgghfigfgffighhifgffgihfhiifigii\r\ngihghhhihhffiggghihiifgfiighfgffhhgifhhhhgiighhgggfhggiififgfhgfhfiihighiihfifhifiiiihgiggfihfihfgif\r\ngfhifgggfffgghggigihififgiihgiiggiggihgiggfgghgiifigigfihfiighffiihfgfihhihfgghhhhghhhgiiffhiffffhfg\r\niihfhifiiihhhifghghhfgigihghffgfigffihgigghiihhihfihigghgifgfhffihhghggihggghiihhgihfgfgfhihgfhighig\r\niiihigiffihifhfihhhggfigiggfghfhghffggghgfgfhhghhghiiifgiggghfgfghhhigifhgiifhfffggigffhiifhffigfgig\r\nigghfhgghfgihfhifghggffhhhhfgghffiiihgffhhffghiifhfhhhfhfgifihiffggghihgihgffihhhiigiihfiiihggghgffi\r\niiihiififfhiggiffihgiffigghihhggfihhhghgfgghhighffiihhiggfihfhgigfihihghfgigghghgfhhhigghghgihifihih\r\ngggiififihhiggihihhhhiiiifighiifhfifhgfififghfiifigfiifiihgfhfggiggfigggifhihihiifigggiiifghifhhgihg\r\ngfgffhfgfghihhfhggffggfghigfiihgiiigighfiiiighiihighiihffihgihgifggifgiihififhhhfiiffiihgifhhgfgifhg\r\niihifghhhfhighhiggfifhggfgghgfhhfffffiihigggffiigifhffgfhihgfgggifggfgifihffggfgfggiihhgihgigfiffhhi\r\nhfggggiiihiiffiiiffgigfhhfhfffgfigfhhfhhffhhgghffigfighhifhhgfghhhffgifihiigfifghhggiihhiihffgfhhfgg\r\nfffgfghghhgggighfgghhhhgigggggfgggghigghfgiiffghgfhhhhfgififgfigfggiffgfihfgffhhiihhiihghfggigigffgf\r\nhhfighigifggggfghfhhihgggigffiifighihihffhihgfiigigihighghfihgffhihfiffhfiifffifhhfgighfgfihghffiffh\r\nhgggffhhffifiifgfhfihffffiffhighhfghghhffigfififhhifhfihiffhgiffhgffggfighgiiiighggiigifggfhfgigiffg\r\nggihigifgffgfiffgfifghhhfgghigffhhhhiifgggghhiigghiffgifhhhgifffhhgifhfihfhfihfffffigigghgighfgigghi\r\nggigighhfffiigiigffggfghghghhhhihgfhgggifhhighiffhggfigfhggiifiihgigggfhiiffgiiiiffggffffgffhggihgig\r\nhifggffggffgfifgghiiighghhhgihhghifihhifiiffifhghhfhiiihghfgiffiiihgffhiffighfhhfgghgifhfiihhffhgiif\r\nghghiighgfffhffhihifhihfiighigihgifgffggfifhfhgfggfiihigggfifhififggfghihigfhhiiifffiififhiiihhiifhh\r\ngigfiffhigiihfihgifffigfhigifhffgigigifigghghihgfffgihffgfigfiiiggfhihgigfgggghhiggfgghighighggghfff\r\nfifiiggffihgfiffihhgigghighifhhhfghhihgffgggiigigfhifghifihfghgfgigfiggfiihgggggihhihihifggffhigfffh\r\nfifiiffihighgiigigffgifhififighfiifgghihgfihhhghgfifghiifhhgfigggfgihgghgfhihhgfihhgffigihiihhigifig\r\ngfighhihghhhgfififhhgigfifggiifhfgghhhffffffffgfiffhggffhgfifhggfhfiffffgiigfhggghgggfhhfhfggiigffii\r\nfgihffgihfhfgggihififgghihghigfhfhfhhihiifhffhggiifghgggghfhigifhifgghfhfighififffhhifihihiigghgggfh\r\nfihiggihfffhhfhiggfhihfhgggfhhggiihghggfgfihifhffiffiiffghifhfggiggfgghfhhggggiffgfiiiifgfgighghiggg\r\nhfhhhgffhiffgifiigfgihigfhghhhifffhgffhgiigghgihhfhigfifhifiigifigffifhigfhifffifffffhghgigfhghhffih\r\nighihhgihfgifghfihhihfgfifhhffififggghhifhggghfiggihfifihigffggfhggigffihfghghgfhiigfifighgfggifgifi\r\ngfffhfihghiihfgffhifigiifigffggghhfifgifhiihghhgggfggiffhghfihighfhiggiigffigfiihfihifigghggiiffhifi\r\nghhifihiifiigghifhgiihhhgfhgfhfifhfiggififffffiihgihgighifhhgigffgfhfffgiggiggihihgfgiihhhhfiffghfff\r\niiifhfhfghhffghiiiffigifgifffgggiiifhgfffhgihgighhighifgfihhfgffgigiiihfghghfgghhfgghgfffhgiiifhigfg\r\nghgghhhfifgigfiigiiihfhifiiffighfiiggfffifhfhfgfifgfihiifgifgihiihifihiiihggihggihgifihifghiggfhhgfi\r\nfffffgghifhhfhfifgfiiighggigghhhggigiigfgigggfhhhfiiihhhfihfiifhgggfhhhhffgifigfhhfgigghifhfghhgiifh\r\nifhfighgiihgfihfhfhfghghfhigfifhiiihgfgihfhhhfigfhihihihfffiggfhffgfighiiifgghgiigghfhfhgffiggifiigf\r\nifffhhffhhhhhfgiifghfhihihgfiffgfiiffhggffiihfgfigihgghhigiiihffgffhghhggiigfgifighihhfgiggihiiigghg\r\nhhggiffggfiifhfhfiifgihihfiiiifhiighfiggiiihiihhighigiihfghhggifgfggfgggghffggfiighfhhihhgighfifgfig\r\nfgffffgfgihhffgigigfififhgffigifihfhgffihfggfgfffhghgghgiigfgfgffhihiifghgiiighgffgfgfhgggiggfiiifig\r\nigffigffihghighiifffgigfihihigiiifiihgihfhfihggffgghihgigigfffhihggifgfigffgiffgggffggfhfhifhhfhhfhf\r\ngifhghhghgghihhghggfigiihgiihgffhgiihgghhggiiigiififgfhfhhgghfhiiffigiggigghihgggfggggfghgihiiggfgif\r\nffhghghgiifhifgiiifghgghiffhhigghgfhfhifgfiiihghfhfhihihgggfhgggghhhgiihfifhhghihiggghihfgggfifhghfh"
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 500
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: fd74af201755d734c9d2368e35c5878d, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+--- !u!23 &1081660170
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23113833326986170, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1081660166}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: f155d36903bd2f242a09985f7b6a8d73, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &1192795422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1192795426}
+  - component: {fileID: 1192795425}
+  - component: {fileID: 1192795424}
+  - component: {fileID: 1192795423}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!23 &1192795423
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192795422}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: e6ddc669e9faa4dad93207caa5a7c773, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &1192795424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192795422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1192795425
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192795422}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1192795426
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192795422}
+  m_LocalRotation: {x: 0, y: 0.10452846, z: 0, w: 0.9945219}
+  m_LocalPosition: {x: 0, y: -0.672, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_Children:
+  - {fileID: 1081660167}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 12, z: 0}
 --- !u!1001 &1578521699
 Prefab:
   m_ObjectHideFlags: 0
@@ -298,6 +487,23 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1989187440949086, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350200030933598, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186222421519692, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23965793514049256, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f5eeede4c3c7b5f45906e8746a77cc6d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15, type: 2}
   m_IsPrefabParent: 0
@@ -308,6 +514,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114848120511536268, guid: 8814ea52310d2614a9feda02ec355ae4,
+        type: 2}
+      propertyPath: AudioClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 439642, guid: 8814ea52310d2614a9feda02ec355ae4, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -339,6 +550,35 @@ Prefab:
     - target: {fileID: 439642, guid: 8814ea52310d2614a9feda02ec355ae4, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114848120511536268, guid: 8814ea52310d2614a9feda02ec355ae4,
+        type: 2}
+      propertyPath: AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cef1ff410aed7de40961cb51413371ef, type: 3}
+    - target: {fileID: 114848120511536268, guid: 8814ea52310d2614a9feda02ec355ae4,
+        type: 2}
+      propertyPath: AudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: e2a896bd9c80e1d41a2d78a6fb7747b0, type: 3}
+    - target: {fileID: 114848120511536268, guid: 8814ea52310d2614a9feda02ec355ae4,
+        type: 2}
+      propertyPath: AudioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 335cc709cf6176542b8237578bbcb44d, type: 3}
+    - target: {fileID: 114848120511536268, guid: 8814ea52310d2614a9feda02ec355ae4,
+        type: 2}
+      propertyPath: AudioVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114848120511536268, guid: 8814ea52310d2614a9feda02ec355ae4,
+        type: 2}
+      propertyPath: EdgeworkConfiguration
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 101964, guid: 8814ea52310d2614a9feda02ec355ae4, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8814ea52310d2614a9feda02ec355ae4, type: 2}

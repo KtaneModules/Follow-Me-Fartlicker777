@@ -11,10 +11,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615501dbe4f3fe94fbf4b564abb10237, type: 3}
   m_Name: ModConfig
   m_EditorClassIdentifier: 
-  id: template
-  title: Template
-  author: 
-  description: 
+  id: FollowMe
+  title: Follow Me
+  author: me
+  description: 'In this world you''re either a leader or a follower. Make your choice.
+
+
+    Find out where you are by using the unique path shown.
+
+
+    Modeling by Blan (derogatory.)
+
+
+    The manual can be found in the manuals folder of your game or at ktane.timwi.de.
+
+
+    Contact Fartlicker777#9169 on Discord if there are any bugs.'
   version: 
   outputFolder: build
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: 257a2e2135eec514fb74689d2758a561, type: 3}

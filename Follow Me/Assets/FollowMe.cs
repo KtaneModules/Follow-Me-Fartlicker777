@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +12,16 @@ public class FollowMe : MonoBehaviour {
    public KMBombInfo Bomb;
    public KMAudio Audio;
 
+   public GameObject Mod;
+
    public KMSelectable[] MoveSpots;
    public TextMesh[] Arrows;
+
+   public Material Static;
+   public Material Blackness;
+   public Renderer Screen;
+
+   public TextMesh BlunderText;
 
    string TPAPath = "";
 
@@ -53,9 +61,12 @@ public class FollowMe : MonoBehaviour {
 
    int LastDig;
 
+   bool anim = false;
+
    List<string> Path = new List<string>() { };
 
    Coroutine PathDisplay;
+   Coroutine StaticScreen;
 
    static int ModuleIdCounter = 1;
    int ModuleId;
@@ -82,7 +93,8 @@ public class FollowMe : MonoBehaviour {
    }*/
 
    void BPress (KMSelectable B) {
-      if (ModuleSolved) {
+      Audio.PlaySoundAtTransform("click", B.transform);
+      if (ModuleSolved || anim) {
          return;
       }
       if (MoveSpots[0] == B) {
@@ -90,9 +102,7 @@ public class FollowMe : MonoBehaviour {
             Pos[0]--;
          }
          else {
-            GetComponent<KMBombModule>().HandleStrike();
-            Reset();
-            return;
+            Strike();
          }
       }
       else if (MoveSpots[1] == B) {
@@ -100,9 +110,7 @@ public class FollowMe : MonoBehaviour {
             Pos[1]--;
          }
          else {
-            GetComponent<KMBombModule>().HandleStrike();
-            Reset();
-            return;
+            Strike();
          }
       }
       else if (MoveSpots[2] == B) {
@@ -110,9 +118,7 @@ public class FollowMe : MonoBehaviour {
             Pos[1]++;
          }
          else {
-            GetComponent<KMBombModule>().HandleStrike();
-            Reset();
-            return;
+            Strike();
          }
       }
       else {
@@ -120,14 +126,11 @@ public class FollowMe : MonoBehaviour {
             Pos[0]++;
          }
          else {
-            GetComponent<KMBombModule>().HandleStrike();
-            Reset();
-            return;
+            Strike();
          }
       }
       if (Pos[0] == Goal[0] && Pos[1] == Goal[1]) {
-         GetComponent<KMBombModule>().HandlePass();
-         ModuleSolved = true;
+         Solve();
       }
    }
 
@@ -192,23 +195,85 @@ public class FollowMe : MonoBehaviour {
       /*for (int i = 0; i < 4; i++) {
          HaveHighlighted[i] = false;
       }*/
+      Goal[0] = 0;
+      Goal[1] = 0;
       Generate();
-      Pos[0] = InitPos[0];
-      Pos[1] = InitPos[1];
+      //Pos[0] = InitPos[0];
+      //Pos[1] = InitPos[1];
+   }
+
+   void Strike () {
+      ClearScreenOfArrows();
+      GetComponent<KMBombModule>().HandleStrike();
+      StartCoroutine(StrikeAnim());
+      //Reset();
+   }
+
+   IEnumerator StrikeAnim () {
+      anim = true;
+      Audio.PlaySoundAtTransform("Strike Maybe", transform);
+      StaticScreen = StartCoroutine(ChangeStatic());
+      BlunderText.text += "?";
+      yield return new WaitForSeconds(.8f);
+      BlunderText.text += "?";
+      yield return new WaitForSeconds(.9f);
+      BlunderText.text += "?";
+      yield return new WaitForSeconds(.9f);
+      BlunderText.text = "";
+      StopCoroutine(StaticScreen);
+      Screen.GetComponent<MeshRenderer>().material = Blackness;
+      anim = false;
+      Reset();
+   }
+
+   IEnumerator ChangeStatic () {
+
+      while (true) {
+         Screen.GetComponent<MeshRenderer>().material = Static;
+         //Debug.Log(Static.mainTextureOffset.x);
+         Screen.material.SetTextureOffset("_MainTex", new Vector2(Rnd.Range(0f, 1f), Rnd.Range(0f, 1f)));
+         //Static.mainTextureOffset.x
+         yield return null;
+      }
+   }
+
+   void Solve () {
+      StartCoroutine(YouSolvedItGoodJob());
+      
+      ModuleSolved = true;
+      GetComponent<KMBombModule>().HandlePass();
+   }
+
+   IEnumerator YouSolvedItGoodJob () {
+      ClearScreenOfArrows();
+      Audio.PlaySoundAtTransform("solve", transform);
+      for (int i = 0; i < 5; i++) {
+         Mod.transform.Rotate(new Vector3(0, -9f, 0));
+         yield return new WaitForSecondsRealtime(.01f);
+      }
+      yield return new WaitForSecondsRealtime(.5f);
+      for (int i = 0; i < 125; i++) {
+         Mod.transform.Rotate(new Vector3(0, 9f, 0));
+         yield return new WaitForSecondsRealtime(.01f);
+      }
+      yield return new WaitForSecondsRealtime(.15f);
+      BlunderText.color = new Color32(255, 255, 255, 255);
+      BlunderText.text = "✓";
+      yield return null;
+   }
+
+   void ClearScreenOfArrows () {
+      StopCoroutine(PathDisplay);
+      for (int i = 0; i < 4; i++) {
+         Arrows[i].gameObject.SetActive(false);
+      }
    }
 
    void Start () {
       Generate();
-      PathDisplay = StartCoroutine(ShowPath());
-      Pos[0] = InitPos[0];
-      Pos[1] = InitPos[1];
-
-      string pathLog = "";
-      for (int i = 0; i < Path.Count(); i++) {
-         pathLog += Path[i];
-      }
-      Debug.LogFormat("[Follow Me #{0}] Starting at position {1}{2}, the path goes: {3}.", ModuleId, "ABCDEFGH"[InitPos[1]], InitPos[0] + 1, pathLog);
-      Debug.LogFormat("[Follow Me #{0}] Goal position is at {1}{2}.", ModuleId, "ABCDEFGH"[Goal[1]], Goal[0] + 1);
+      //Pos[0] = InitPos[0];
+      //Pos[1] = InitPos[1];
+      //StartCoroutine(YouSolvedItGoodJob());
    }
 
    void GenerateGoal () {
@@ -236,9 +301,10 @@ public class FollowMe : MonoBehaviour {
       Goal[0] += InitPos[1] != 0 && InitPos[1] != 4 ? 1 : 0;
 
       string letterCol = "ABCDEFGH";
-      Goal[1] += !Bomb.GetSerialNumberLetters().Any(x => letterCol.Contains(x.ToString())) ? 4 : 0;
+      Goal[1] += !Bomb.GetSerialNumberLetters().Any(x => letterCol[InitPos[1]].ToString() == x.ToString()) ? 4 : 0;
+      //Goal[1] += !Bomb.GetSerialNumberLetters().Any(x => letterCol.Contains(x.ToString())) ? 4 : 0;
       Goal[1] += !ExMath.IsPrime(InitPos[0] + 1) ? 2 : 0;
-      Goal[1] += Path.Count() < 5 ? 1 : 0;
+      Goal[1] += Path.Count() > 5 ? 1 : 0;
    }
 
    IEnumerator ShowPath () {
@@ -279,11 +345,20 @@ public class FollowMe : MonoBehaviour {
       InitPos[0] = Pos[0];
       InitPos[1] = Pos[1];
       GeneratePath();
+
+      
       /*Debug.Log("ABCDEFGHIJK"[InitPos[1]].ToString() + (InitPos[0] + 1));
       for (int i = 0; i < Path.Count(); i++) {
          Debug.Log(Path[i]);
       }*/
       GenerateGoal();
+      string pathLog = "";
+      for (int i = 0; i < Path.Count(); i++) {
+         pathLog += Path[i];
+      }
+      Debug.LogFormat("[Follow Me #{0}] Starting at position {1}{2}, the path goes: {3}.", ModuleId, "ABCDEFGH"[InitPos[1]], InitPos[0] + 1, pathLog);
+      Debug.LogFormat("[Follow Me #{0}] Goal position is at {1}{2}.", ModuleId, "ABCDEFGH"[Goal[1]], Goal[0] + 1);
+      PathDisplay = StartCoroutine(ShowPath());
    }
 
    void GeneratePath () {
