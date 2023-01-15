@@ -43,9 +43,9 @@ public class FollowMe : MonoBehaviour {
    };*/
    //string Arrows = "????";
 
-   string[][] Maze = new string[][] {
+   string[][] Maze = new string[][] { //Show where you can do
      new string[] {"R" , "LDR" , "LR" , "LR" , "LR" , "LR" , "DL" , "D"},
-     new string[] {"DR" , "UDL" , "D" , "D" , "L" , "LR" , "ULDR" , "UL"},
+     new string[] {"DR" , "UDL" , "D" , "D" , "R" , "LR" , "ULDR" , "UL"},
      new string[] {"UD" , "UD" , "UR" , "LUR" , "LDR" , "LDR" , "ULR" , "L"},
      new string[] {"UD" , "UR" , "LR" , "DL" , "UD" , "UR" , "LR" , "LD"},
      new string[] {"UR" , "LDR" , "DL" , "UR" , "ULDR" , "LR" , "LD" , "UD"},
