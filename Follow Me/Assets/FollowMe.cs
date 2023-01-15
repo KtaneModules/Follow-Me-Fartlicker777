@@ -461,14 +461,132 @@ public class FollowMe : MonoBehaviour {
    }
 
 #pragma warning disable 414
-   private readonly string TwitchHelpMessage = @"Use !{0} to do something.";
+   private readonly string TwitchHelpMessage = @"Use !{0} ULDR to press the buttons in those directions.";
 #pragma warning restore 414
 
-   IEnumerator ProcessTwitchCommand (string Command) {
-      yield return null;
-   }
+   IEnumerator ProcessTwitchCommand(string Command)
+   {
+        Command = Command.Replace(" ", "");
+        for (int i = 0; i < Command.Length; i++)
+        {
+            if (!Command[i].EqualsAny('U', 'u', 'L', 'l', 'R', 'r', 'D', 'd'))
+            {
+                yield return "sendtochaterror I don't understand!";
+                yield break;
+            }
+        }
+        yield return null;
+        for (int i = 0; i < Command.Length; i++)
+        {
+            if (anim)
+                yield break;
+            switch (Command[i])
+            {
+                case 'U':
+                case 'u':
+                    MoveSpots[0].OnInteract();
+                    break;
+                case 'L':
+                case 'l':
+                    MoveSpots[1].OnInteract();
+                    break;
+                case 'R':
+                case 'r':
+                    MoveSpots[2].OnInteract();
+                    break;
+                case 'D':
+                default:
+                    MoveSpots[3].OnInteract();
+                    break;
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 
-   IEnumerator TwitchHandleForcedSolve () {
-      yield return null;
-   }
+    IEnumerator TwitchHandleForcedSolve()
+    {
+        while (anim) yield return true;
+        if (Pos[0] == Goal[0] && Pos[1] == Goal[1])
+        {
+            string paths = Maze[Pos[0]][Pos[1]];
+            int rando = Rnd.Range(0, paths.Length);
+            if (paths[rando] == 'U')
+            {
+                MoveSpots[0].OnInteract();
+                yield return new WaitForSeconds(0.1f);
+                MoveSpots[3].OnInteract();
+                yield return new WaitForSeconds(0.1f);
+            }
+            else if (paths[rando] == 'L')
+            {
+                MoveSpots[1].OnInteract();
+                yield return new WaitForSeconds(0.1f);
+                MoveSpots[2].OnInteract();
+                yield return new WaitForSeconds(0.1f);
+            }
+            else if (paths[rando] == 'D')
+            {
+                MoveSpots[3].OnInteract();
+                yield return new WaitForSeconds(0.1f);
+                MoveSpots[0].OnInteract();
+                yield return new WaitForSeconds(0.1f);
+            }
+            else if (paths[rando] == 'R')
+            {
+                MoveSpots[2].OnInteract();
+                yield return new WaitForSeconds(0.1f);
+                MoveSpots[1].OnInteract();
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+        else
+        {
+            var q = new Queue<int[]>();
+            var allMoves = new List<Movement>();
+            var startPoint = Pos.ToArray();
+            var target = Goal.ToArray();
+            q.Enqueue(startPoint);
+            while (q.Count > 0)
+            {
+                var next = q.Dequeue();
+                if (next[0] == target[0] && next[1] == target[1])
+                    goto readyToSubmit;
+                string paths = Maze[next[0]][next[1]];
+                var cell = paths.Replace(" ", "");
+                var allDirections = "ULRD";
+                var offsets = new int[,] { { -1, 0 }, { 0, -1 }, { 0, 1 }, { 1, 0 } };
+                for (int i = 0; i < 4; i++)
+                {
+                    var check = new int[] { next[0] + offsets[i, 0], next[1] + offsets[i, 1] };
+                    if (cell.Contains(allDirections[i]) && !allMoves.Any(x => x.start[0] == check[0] && x.start[1] == check[1]))
+                    {
+                        q.Enqueue(check);
+                        allMoves.Add(new Movement { start = next, end = check, direction = i });
+                    }
+                }
+            }
+            throw new InvalidOperationException("Follow Me's TP autosolver failed to find a valid path.");
+            readyToSubmit:
+            var target2 = new int[] { target[0], target[1] };
+            var lastMove = allMoves.First(x => x.end[0] == target2[0] && x.end[1] == target2[1]);
+            var relevantMoves = new List<Movement> { lastMove };
+            while (lastMove.start != startPoint)
+            {
+                lastMove = allMoves.First(x => x.end[0] == lastMove.start[0] && x.end[1] == lastMove.start[1]);
+                relevantMoves.Add(lastMove);
+            }
+            for (int i = 0; i < relevantMoves.Count; i++)
+            {
+                MoveSpots[relevantMoves[relevantMoves.Count - 1 - i].direction].OnInteract();
+                yield return new WaitForSeconds(.1f);
+            }
+        }
+    }
+
+    class Movement
+    {
+        public int[] start;
+        public int[] end;
+        public int direction;
+    }
 }
